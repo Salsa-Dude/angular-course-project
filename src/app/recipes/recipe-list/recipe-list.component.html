@@ -7,24 +7,15 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <a href="#" 
-    class="list-group-item clearfix" 
-    *ngFor="let recipe of recipes">
-      <div class="pull-left">
-        <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-        <p class="list-group-item-text">{{ recipe.description }}</p>
-      </div>
-      <span class="pull-right">
-      
-        <!-- propery binding - [src]="recipe.imagePath"  -->
-        <img 
-          src="{{ recipe.imagePath }}" 
-          alt="" 
-          class="img-responsive" 
-          style="max-height: 50px;">
-      </span>
-    </a>
-    <app-recipe-item></app-recipe-item>
+    <!-- Built-in structural directives
+    Define a block of HTML that determines how Angular renders a single item.
+    Use the NgFor directive to present a list of items. -->
+    <app-recipe-item 
+      *ngFor="let recipeElement of recipes"
+      [recipe]="recipeElement"
+      ></app-recipe-item>
+      <!-- Property binding moves a value in one direction, from a component's property into a target element property -->
+      <!-- To bind to an element's property, enclose it in square brackets, [], which identifies the property as a target property.  -->
   </div>
 </div>
 
