@@ -13,6 +13,7 @@
     <app-recipe-item 
       *ngFor="let recipeElement of recipes"
       [recipe]="recipeElement"
+      (recipeSelected)="onRecipeSelected(recipeElement)"
       ></app-recipe-item>
       <!-- Property binding moves a value in one direction, from a component's property into a target element property -->
       <!-- To bind to an element's property, enclose it in square brackets, [], which identifies the property as a target property.  -->
