@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { RecipeService } from '../../recipe-service';
 
 import { Recipe } from '../../recipe.model';
 
@@ -12,17 +13,21 @@ export class RecipeItemComponent implements OnInit {
   // signifies that the property can receive its value from its parent component.
   @Input() recipe: Recipe;
 
+  constructor(private recipeService: RecipeService){}
+
   // The child component uses the @Output() property to raise an event to notify the parent of the change.
   // To raise an event, an @Output() must have the type of EventEmitter
-  @Output() recipeSelected = new EventEmitter<void>();
+  // @Output() recipeSelected = new EventEmitter<void>();
 
-  constructor() { }
 
   ngOnInit(): void {
   }
 
   onSelected() {
-    this.recipeSelected.emit();
+    // this.recipeSelected.emit();
+
+    // inject
+    this.recipeService.recipeSelected.emit(this.recipe);
   }
 
 }
